@@ -3,29 +3,46 @@ This is my first project both in terms of simulation software and robotics.
 
 The project is on developing a Robotic cell for Pick_Place and Welding applicaitons using 'RoboDk' robot simulation software.
 
-Scene setup:  
-3 UR10 robots, U shaped pins, a Camera and a Turntable  
+## Scene Setup
+- **Components**:
+  - 3 UR10 robots
+  - U-shaped pins
+  - A Camera
+  - A Turntable
 ![alt text](images/Capture1.PNG)
-Sequence:  
-1. Robot1 picks the U pins and place them on to the 'Turntable'.
-2. Turntable rotates 0.393 rad every time a new U pin is plced on it.
-3. Once all the Pins are placed, the Turntable rotates back to the home position.
-4. Robot2 starts welding each pin pair. For each welding movement, the Turntable rotates again by 0.393 rad
-5. The pins overlap can be visualised through the camera mounted on the Robot3
+## Sequence:  
+1. **Pick and Place**:
+   - Robot1 picks the U pins and places them onto the Turntable.
+   - The Turntable rotates 0.393 rad every time a new U pin is placed on it.
+   - Once all the pins are placed, the Turntable rotates back to the home position.
+2. **Welding**:
+   - Robot2 starts welding each pin pair. For each welding movement, the Turntable rotates again by 0.393 rad.
+   - The pins' overlap can be visualized through the camera mounted on Robot3.
 
-Code Explaination:
-1. Robot1, base frame, tool, pins and the Turntable(TT) are defined
-2. Robot1 joints_home, speed are defined
-3. Targets Pick, approach and Place are defined
-4. The Pins are spawned in the scence and are placed at the each Pick target corodinates, w.r.t 'Part_Ref' reference frame![alt text](<images/U pins.PNG>)
-5. To make the robot1 pick the pins, the parent of the pins is changed to 'tool'
-6. During the place action, the pins' parent is again changed to 'TT' frame.
-7. The TT rotates for every place action.
-8. Once all the pins are placed on the TT, Robot1 moves to home poisition and TT rotates back to home too![alt text](images/Capture2.PNG)
-9. Next, weld frame, robot2  and welding tool are defined
-10. Similar to 'robot1', Weld target and approach positon are set![alt text](images/Capture3.PNG)
-11. 'Robot2' does the welding operations and moves back to home position.
-12. All the pick targets, pins, pins ref frame, Targets are then deleted.
+## Code Explaination:
+1. **Initialization**:
+   - Define Robot1, base frame, tool, pins, and the Turntable (TT).
+   - Define Robot1 joints_home and speed.
+   - Define targets for Pick, approach, and Place.
+  ![alt text](<images/U pins.PNG>)
+2. **Pick and Place Operations**:
+   - Spawn the pins in the scene and place them at each Pick target coordinate, with respect to the 'Part_Ref' reference frame.
+   - Make Robot1 pick the pins by changing the parent of the pins to 'tool'.
+   - During the place action, change the pins' parent back to the 'TT' frame.
+   - Rotate the TT for every place action.
+   - Once all the pins are placed on the TT, Robot1 moves to the home position, and the TT rotates back to home as well.
+   - ![Robot1 Operations](images/Capture2.PNG)
+3. **Welding Operations**:
+   - Define the weld frame, Robot2, and welding tool.
+   - Set the weld target and approach position similarly to Robot1.
+
+   ![Welding Setup](images/Capture3.PNG)
+4. **Operation Execution**:
+   - Robot2 performs the welding operations and moves back to the home position.
+   - Delete all pick targets, pins, pins reference frame, and targets after completion.
+
 
 Before running the code, the scene should be setup inside the RoboDk software.  
+
+## Simulation
 The complete simulation can be seen here: https://youtu.be/dYk3MkHwQvU
