@@ -31,7 +31,7 @@ The project is on developing a Robotic cell for Pick_Place and Welding applicait
    - During the place action, change the pins' parent back to the 'TT' frame.
    - Rotate the TT for every place action.
    - Once all the pins are placed on the TT, Robot1 moves to the home position, and the TT rotates back to home as well.
-   - ![Robot1 Operations](images/Capture2.PNG)
+   ![Robot1 Operations](images/Capture2.PNG)
 3. **Welding Operations**:
    - Define the weld frame, Robot2, and welding tool.
    - Set the weld target and approach position similarly to Robot1.
