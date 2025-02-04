@@ -1,48 +1,97 @@
-# Robodk
-This is my first project both in terms of simulation software and robotics.
+# RoboDK - Pick & Place and Welding Automation
 
-The project is on developing a Robotic cell for Pick_Place and Welding applicaitons using 'RoboDk' robot simulation software.
+This is my first project using both **robot simulation software and robotics**.
 
-## Scene Setup
-- **Components**:
-  - 3 UR10 robots
-  - U-shaped pins
-  - A Camera
-  - A Turntable
-![alt text](images/Capture1.PNG)
-## Sequence:  
-1. **Pick and Place**:
-   - Robot1 picks the U pins and places them onto the Turntable.
-   - The Turntable rotates 0.393 rad every time a new U pin is placed on it.
-   - Once all the pins are placed, the Turntable rotates back to the home position.
-2. **Welding**:
-   - Robot2 starts welding each pin pair. For each welding movement, the Turntable rotates again by 0.393 rad.
-   - The pins' overlap can be visualized through the camera mounted on Robot3.
+The project focuses on developing a **robotic cell** for **Pick & Place** and **Welding applications** using the **RoboDK** simulation software.
 
-## Code Explaination:
-1. **Initialization**:
-   - Define Robot1, base frame, tool, pins, and the Turntable (TT).
-   - Define Robot1 joints_home and speed.
-   - Define targets for Pick, approach, and Place.
-  ![alt text](<images/U pins.PNG>)
-2. **Pick and Place Operations**:
-   - Spawn the pins in the scene and place them at each Pick target coordinate, with respect to the 'Part_Ref' reference frame.
-   - Make Robot1 pick the pins by changing the parent of the pins to 'tool'.
-   - During the place action, change the pins' parent back to the 'TT' frame.
-   - Rotate the TT for every place action.
-   - Once all the pins are placed on the TT, Robot1 moves to the home position, and the TT rotates back to home as well.
-   ![Robot1 Operations](images/Capture2.PNG)
-3. **Welding Operations**:
-   - Define the weld frame, Robot2, and welding tool.
-   - Set the weld target and approach position similarly to Robot1.
+---
 
-   ![Welding Setup](images/Capture3.PNG)
-4. **Operation Execution**:
-   - Robot2 performs the welding operations and moves back to the home position.
-   - Delete all pick targets, pins, pins reference frame, and targets after completion.
+##  Scene Setup
+### **Components Used:**
+- **3 UR10 Robots**
+- **U-shaped Pins**
+- **A Camera**
+- **A Turntable**
 
+![Scene Setup](images/Capture1.PNG)
 
-Before running the code, the scene should be setup inside the RoboDk software.  
+---
 
-## Simulation
-The complete simulation can be seen here: https://youtu.be/dYk3MkHwQvU
+##  **Sequence of Operations**
+### **1️ Pick and Place**
+- **Robot1** picks the **U-shaped pins** and places them onto the **Turntable**.
+- The **Turntable rotates** **0.393 radians** every time a new U-pin is placed.
+- After all pins are placed, the **Turntable rotates back** to its **home position**.
+
+### **2️ Welding**
+- **Robot2** starts **welding** each **pin pair**.
+- For each welding movement, the **Turntable rotates** again by **0.393 radians**.
+- The **Camera mounted on Robot3** allows visualization of the **pins' overlap** during the welding process.
+
+---
+
+## 🖥️ **Code Explanation**
+### **1️ Initialization**
+- **Connect to RoboDK** and initialize the environment.
+- Define:
+  - **Robot1** (for Pick & Place).
+  - **Robot2** (for Welding).
+  - **Turntable (TT)**.
+  - **Base frame and reference frames**.
+  - **Tools** (gripper and welding tool).
+  - **Camera settings**.
+  - **Speed and home positions**.
+
+![Pick Targets](images/U pins.PNG)
+
+---
+
+### **2️ Pick and Place Operations**
+- **Generate Pick Targets** dynamically using a loop.
+- **Spawn the pins** in the scene at respective Pick target positions.
+- **Robot1 picks the pins**:
+  - **Attaches them to the gripper (tool)**.
+- **Robot1 places the pins**:
+  - **Releases them onto the Turntable (TT)**.
+- **Turntable rotates** **after each placement**.
+- Once all pins are placed:
+  - **Robot1 moves to home position**.
+  - **Turntable rotates back to home**.
+
+![Robot1 Operations](images/Capture2.PNG)
+
+---
+
+### **3️ Welding Operations**
+- Define **welding reference frame**.
+- Set up:
+  - **Robot2** (UR10e-Welding).
+  - **Welding tool**.
+  - **Welding positions (target and approach)**.
+- **For each welding movement**:
+  - **Turntable rotates**.
+  - **Robot2 moves to the welding position**.
+  - **Welding action is performed**.
+  - **Robot2 moves back to approach position**.
+
+![Welding Setup](images/Capture3.PNG)
+
+---
+
+### **4️ Operation Execution & Cleanup**
+- **Robot2 completes welding** and moves to **home position**.
+- **Cleanup Process:**
+  - Remove all **Pick targets**.
+  - Delete **pins and reference frames**.
+  - Remove **welding targets** after execution.
+
+---
+
+##  **Prerequisites**
+Before running the script, the **scene should be set up inside RoboDK**.
+
+---
+
+##  **Simulation Video**
+The complete **simulation can be viewed here**:  
+🔗 [Watch on YouTube](https://youtu.be/dYk3MkHwQvU)
