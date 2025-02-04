@@ -42,7 +42,7 @@ The project focuses on developing a **robotic cell** for **Pick & Place** and **
   - **Camera settings**.
   - **Speed and home positions**.
 
-![Pick Targets](images/U pins.PNG)
+![Pick Targets](images/U_pins.PNG)
 
 ---
 
